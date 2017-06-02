@@ -37,7 +37,7 @@ $returnListener = function (
     $replyText, "\n",
     $exchange, "\n",
     $routingKey, "\n",
-    $message->body, "\n";
+    $message->getBody(), "\n";
 };
 
 $channel->set_return_listener($returnListener);

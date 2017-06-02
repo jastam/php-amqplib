@@ -1104,13 +1104,14 @@ class AMQPChannel extends AbstractChannel
         $pkt = new AMQPWriter();
         $pkt->write($this->pre_publish($exchange, $routing_key, $mandatory, $immediate, $ticket));
 
+        $message_body = $msg->getBody();
         $this->connection->send_content(
             $this->channel_id,
             60,
             0,
-            mb_strlen($msg->body, 'ASCII'),
+            mb_strlen($message_body, 'ASCII'),
             $msg->serialize_properties(),
-            $msg->body,
+            $message_body,
             $pkt
         );
 
@@ -1164,13 +1165,14 @@ class AMQPChannel extends AbstractChannel
             $ticket = isset($m[5]) ? $m[5] : null;
             $pkt->write($this->pre_publish($exchange, $routing_key, $mandatory, $immediate, $ticket));
 
+            $message_body = $msg->getBody();
             $this->connection->prepare_content(
                 $this->channel_id,
                 60,
                 0,
-                mb_strlen($msg->body, 'ASCII'),
+                mb_strlen($message_body, 'ASCII'),
                 $msg->serialize_properties(),
-                $msg->body,
+                $message_body,
                 $pkt
             );
 

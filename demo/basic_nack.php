@@ -26,14 +26,14 @@ $channel->queue_bind($queue, $exchange);
  */
 function process_message($message)
 {
-    if ($message->body == 'good') {
+    if ($message->getBody() == 'good') {
         $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
     } else {
         $message->delivery_info['channel']->basic_nack($message->delivery_info['delivery_tag']);
     }
 
     // Send a message with the string "quit" to cancel the consumer.
-    if ($message->body === 'quit') {
+    if ($message->getBody() === 'quit') {
         $message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
     }
 }

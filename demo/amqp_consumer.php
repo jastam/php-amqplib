@@ -43,13 +43,13 @@ $channel->queue_bind($queue, $exchange);
 function process_message($message)
 {
     echo "\n--------\n";
-    echo $message->body;
+    echo $message->getBody();
     echo "\n--------\n";
 
     $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
 
     // Send a message with the string "quit" to cancel the consumer.
-    if ($message->body === 'quit') {
+    if ($message->getBody() === 'quit') {
         $message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
     }
 }

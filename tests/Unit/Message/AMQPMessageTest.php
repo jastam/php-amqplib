@@ -78,7 +78,7 @@ class AMQPMessageTest extends \PHPUnit_Framework_TestCase
         $message = new AMQPMessage('');
         $message->setBody('body');
         $message->setIsTruncated(true);
-        $message->content_encoding = 'shortstr';
+        $message->setContentEncoding('shortstr');
 
         $this->assertEquals($message->getBody(),'body');
         $this->assertTrue($message->isTruncated());

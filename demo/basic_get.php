@@ -44,7 +44,7 @@ $message = $channel->basic_get($queue);
 
 $channel->basic_ack($message->delivery_info['delivery_tag']);
 
-var_dump($message->body);
+var_dump($message->getBody());
 
 $channel->close();
 $connection->close();

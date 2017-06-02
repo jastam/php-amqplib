@@ -35,7 +35,7 @@ class Consumer
             $this->startTime = microtime(true);
         }
 
-        if ($msg->body == 'quit') {
+        if ($msg->getBody() == 'quit') {
             echo sprintf("Pid: %s, Count: %s, Time: %.4f\n", getmypid(), $this->msgCount, microtime(true) - $this->startTime);
             die;
         }

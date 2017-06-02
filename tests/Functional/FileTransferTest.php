@@ -90,7 +90,7 @@ class FileTransferTest extends \PHPUnit_Framework_TestCase
         $delivery_info['channel']->basic_ack($delivery_info['delivery_tag']);
         $delivery_info['channel']->basic_cancel($delivery_info['consumer_tag']);
 
-        $this->assertEquals($this->messageBody, $msg->body);
+        $this->assertEquals($this->messageBody, $msg->getBody());
     }
 
     public function tearDown()

@@ -12,16 +12,16 @@ class AMQPMessage extends GenericContent
     const DELIVERY_MODE_PERSISTENT = 2;
 
     /** @var string */
-    public $body;
+    protected $body;
 
     /** @var int */
-    public $body_size;
+    protected $body_size;
 
     /** @var bool */
-    public $is_truncated = false;
+    protected $is_truncated = false;
 
     /** @var string */
-    public $content_encoding;
+    protected $content_encoding;
 
     /** @var array */
     protected static $propertyDefinitions = array(
@@ -70,6 +70,14 @@ class AMQPMessage extends GenericContent
         $this->body = $body;
 
         return $this;
+    }
+
+    /**
+     * @param string $content_encoding
+     */
+    public function setContentEncoding($content_encoding)
+    {
+        $this->content_encoding = $content_encoding;
     }
 
     /**

@@ -101,7 +101,7 @@ abstract class AbstractPublishConsumeTest extends \PHPUnit_Framework_TestCase
         $delivery_info['channel']->basic_ack($delivery_info['delivery_tag']);
         $delivery_info['channel']->basic_cancel($delivery_info['consumer_tag']);
 
-        $this->assertEquals($this->msgBody, $msg->body);
+        $this->assertEquals($this->msgBody, $msg->getBody());
 
         //delivery tests
         $this->assertEquals(getmypid(), $delivery_info['consumer_tag']);

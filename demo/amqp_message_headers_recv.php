@@ -26,7 +26,7 @@ foreach ($bindingKeys as $bindingKey) {
 echo ' [*] Waiting for logs. To exit press CTRL+C', "\n";
 
 $callback = function (AMQPMessage $message) {
-    echo PHP_EOL . ' [x] ', $message->delivery_info['routing_key'], ':', $message->body, "\n";
+    echo PHP_EOL . ' [x] ', $message->delivery_info['routing_key'], ':', $message->getBody(), "\n";
     echo 'Message headers follows' . PHP_EOL;
     var_dump($message->get('application_headers')->getNativeData());
     echo PHP_EOL;

@@ -75,7 +75,7 @@ class ReconnectConnectionTest extends \PHPUnit_Framework_TestCase
         $this->setupChannel();
 
         // Ensure normal publish then get works
-        $this->assertEquals($this->msgBody, $this->publishGet()->body);
+        $this->assertEquals($this->msgBody, $this->publishGet()->getBody());
 
         // Reconnect the socket/stream connection
         $this->connection->reconnect();
@@ -84,7 +84,7 @@ class ReconnectConnectionTest extends \PHPUnit_Framework_TestCase
         $this->setupChannel();
 
         // Ensure normal publish then get works (after reconnect attempt)
-        $this->assertEquals($this->msgBody, $this->publishGet()->body);
+        $this->assertEquals($this->msgBody, $this->publishGet()->getBody());
     }
 
     /**
@@ -135,7 +135,7 @@ class ReconnectConnectionTest extends \PHPUnit_Framework_TestCase
         $this->setupChannel();
 
         // Ensure normal publish then get works
-        $this->assertEquals($this->msgBody, $this->publishGet()->body);
+        $this->assertEquals($this->msgBody, $this->publishGet()->getBody());
     }
 
     /**
@@ -169,7 +169,7 @@ class ReconnectConnectionTest extends \PHPUnit_Framework_TestCase
         $this->setupChannel();
 
         // Ensure normal publish then get works
-        $this->assertEquals($this->msgBody, $this->publishGet()->body);
+        $this->assertEquals($this->msgBody, $this->publishGet()->getBody());
     }
 
     /**
@@ -185,7 +185,7 @@ class ReconnectConnectionTest extends \PHPUnit_Framework_TestCase
         $this->setupChannel();
 
         // Ensure normal publish then get works
-        $this->assertEquals($this->msgBody, $this->publishGet()->body);
+        $this->assertEquals($this->msgBody, $this->publishGet()->getBody());
     }
 
     /**

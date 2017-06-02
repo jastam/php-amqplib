@@ -109,11 +109,11 @@ class Consumer
     public function messageHandler(PhpAmqpLib\Message\AMQPMessage $message)
     {
         echo "\n--------\n";
-        echo $message->body;
+        echo $message->getBody();
         echo "\n--------\n";
 
         $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
-        if ($message->body === 'quit') {
+        if ($message->getBody() === 'quit') {
             $message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
         }
     }
